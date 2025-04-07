@@ -1,50 +1,22 @@
-# Welcome to your Expo app 👋
+Este projeto é um clone do aplicativo da XP Investimentos, feito com React Native usando Expo. A principal diferença é a integração do ExpertIA, uma inteligência artificial criada para simplificar a linguagem do mercado financeiro. O objetivo é tornar os investimentos mais acessíveis para todos, traduzindo termos técnicos em explicações mais fáceis de entender.
+Como o projeto está organizado:
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+    components/commons/dynamic: onde ficam os componentes dinâmicos, que são renderizados com base nos códigos enviados pelo backend, como por exemplo "GP01", "GP02" etc.
 
-## Get started
+    contexts: aqui estão os contextos globais da aplicação, como o de WebSocket e o de estado geral do app.
 
-1. Install dependencies
+    domain/enum e domain/model: usados para guardar os tipos e enums da aplicação (ex: tipos de investimento, status, etc.).
 
-   ```bash
-   npm install
-   ```
+    navigation: onde fica o controle das rotas e navegação entre telas.
 
-2. Start the app
+    pages: contém as páginas principais do app.
 
-   ```bash
-    npx expo start
-   ```
+    service: onde estão os serviços, como requisições com Axios, cache local e comunicação com WebSocket.
 
-In the output, you'll find options to open the app in a
+Como rodar:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+    Instale as dependências com npm install
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+    Inicie o app com npx expo start
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Você pode testar no celular com o Expo Go, ou usar emuladores Android/iOS, ou abrir no navegador.

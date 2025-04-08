@@ -3,10 +3,11 @@ import {
   MD3LightTheme as DefaultTheme,
   PaperProvider,
 } from "react-native-paper";
-import { GlobalContext } from "./src/contexts/global-context";
-import Navigator from "./src/navigation/navigation";
+// import { GlobalContext } from "./contexts/global-context";
+import Navigator from "./navigation/navigation";
 import "react-native-gesture-handler";
 import ToastManager from "toastify-react-native";
+import 'expo-router/entry';
 
 const theme = {
   ...DefaultTheme,
@@ -21,7 +22,7 @@ export default function App() {
 
   return (
     <PaperProvider theme={theme}>
-      <GlobalContext>
+      {/* <GlobalContext> */}
         <ToastManager
           style={{
             fontSize: 12,
@@ -34,7 +35,7 @@ export default function App() {
           }}
         />
         <Navigator />
-      </GlobalContext>
+      {/* </GlobalContext> */}
     </PaperProvider>
   );
 }

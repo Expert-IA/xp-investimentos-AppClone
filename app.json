@@ -1,41 +1,55 @@
 {
   "expo": {
-    "name": "AppXp",
-    "slug": "AppXp",
+    "name": "Luzes",
+    "slug": "native",
     "version": "1.0.0",
+    "owner": "XP",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
-    "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
-    "ios": {
-      "supportsTablet": true
+    "userInterfaceStyle": "light",
+    "icon": "./assets/img/app-icon-v.png",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#000000"
     },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "package": "com.xp.xp_investimentos",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyD6-B0jpVxbauSAnn9Y0exqw3igo_QrQWk"
+        }
+      },
+      "permissions": [
+        "com.google.android.gms.permission.AD_ID"
+      ]
     },
     "plugins": [
       "expo-router",
       [
-        "expo-splash-screen",
+        "expo-tracking-transparency",
         {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "userTrackingPermission": "This identifier will be used to deliver personalized ads to you."
         }
-      ]
+      ],
+      "expo-font"
     ],
-    "experiments": {
-      "typedRoutes": true
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "7faaf4c9-b6ea-4f1e-bdd7-3eb089013691"
+      },
+      "fonts": {
+        "Roboto": {
+          "uri": "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+        }
+      }
+    },
+    "ios": {
+      "bundleIdentifier": "com.xp.native"
     }
   }
 }

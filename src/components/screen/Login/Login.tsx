@@ -16,7 +16,7 @@ import { LoginService } from "../../../service/login/login-service";
 import { UserContext } from "../../../contexts/user-context";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamListType } from "../../../types/types";
-
+// import logo from "../../../../assets/img/logo.png";
 interface UserCredentials {
   userName: string;
   password: string;
@@ -73,7 +73,7 @@ export const Login = () => {
       behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
       <Image
-        source={require("../../../../assets/img/logo.png")}
+        // source={logo}
         style={styles.logo}
       />
 

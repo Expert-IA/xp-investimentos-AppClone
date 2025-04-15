@@ -5,8 +5,7 @@ class AxiosClient {
     isFormData: boolean = false
   ): Promise<AxiosInstance> {
     const axiosInstance = axios.create({
-        // baseURL: `https://dry-tor-06004-4be1614b4d96.herokuapp.com/`,
-      baseURL: "http://10.0.2.2:3001/",
+      baseURL: "http://10.0.2.2:8080/",
     });
 
     // // Se for FormData, não define Content-Type manualmente

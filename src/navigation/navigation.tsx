@@ -13,6 +13,8 @@ import {
 } from "react-native";
 import { Toast } from "toastify-react-native";
 import { Login } from "../components/screen/Login/Login";
+import { UserContext } from "../contexts/user-context";
+import { LoginService } from "../service/login/login-service";
 const Stack = createStackNavigator();
 
 interface UserCredentials {
@@ -21,49 +23,10 @@ interface UserCredentials {
 }
 
 const Navigation = () => {
+  const loginService = new LoginService();
   const [isConnected, setIsConnected] = useState<boolean | null>(null);
-  const [users, setUsers] = useState<UserCredentials>({ userName: "", password: "" });
-  const [isDataLoaded, setIsDataLoaded] = useState(false);
-  const [isSyncRequired, setIsSyncRequired] = useState(false);
-  const [appInitialized, setAppInitialized] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [standardUser, setStandardUser] = useState<any>();
-  const [sendToLogin, setSendToLogin] = useState(true);
+  const { userCredentials, setUserCredentialsContext, flushCredentials } = useContext(UserContext);
 
-  // const setCredentialsUser = async () => {
-  //   try {
-  //     const response = await loginService.login(users);
-  //     await setUserCredentialsContext(response.user);
-  //   } catch (error) {
-  //     setUsers({ ...users, password: "" });
-  //   }
-  // };
-
-  // const initializeApp = async () => {
-  //   setIsLoading(true);
-  //   const hasLaunched = await AsyncStorage.getItem("hasLaunchedBefore");
-  //   if (!hasLaunched) {
-  //     try {
-  //       const response = await loginService.login(users);
-  //       setUserCredentialsContext(response.user);
-  //     } catch (error) {
-  //       setUsers({ ...users, password: "" });
-  //     }
-  //     await AsyncStorage.setItem("hasLaunchedBefore", "true");
-  //   }
-  //   setAppInitialized(true);
-  //   setIsLoading(false);
-  // };
-
-  // useEffect(() => {
-  //   const initialize = async () => {
-  //     const state = await NetInfo.fetch();
-  //     setIsConnected(state.isConnected);
-
-  //     // initializeApp(); 
-  //   };
-  //   initialize();
-  // }, []);
   return (
     <NavigationContainer>
         <Stack.Navigator initialRouteName={"Login"}>

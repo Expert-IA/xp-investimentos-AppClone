@@ -15,7 +15,7 @@ const TabNavigator = () => {
     <Tab.Navigator
       initialRouteName="Feed"
       screenOptions={{
-        tabBarStyle: { backgroundColor: "black", height: 60 },
+        tabBarStyle: { backgroundColor: "#2D2D2D", height: 60 },
         tabBarActiveTintColor: "#3366ff", // Brighter blue color for active tab
         tabBarInactiveTintColor: "gray",
         headerShown: false,

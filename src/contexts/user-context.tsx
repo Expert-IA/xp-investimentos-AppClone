@@ -5,6 +5,7 @@ type UserContextType = {
     userCredentials: UserModel | undefined
     setUserCredentialsContext: (user: UserModel) => void
     flushCredentials: () => void
+    isLoggedIn: boolean
 }
 
 export const UserContext = createContext({} as UserContextType)
@@ -24,10 +25,11 @@ export const UserProvider = ({children}: UserProviderProps) => {
         setUserCredentials(undefined)
     }
 
+    const isLoggedIn = !!userCredentials;
 
     return (
         <UserContext.Provider
-            value={{ userCredentials, setUserCredentialsContext, flushCredentials }}
+            value={{ userCredentials, setUserCredentialsContext, flushCredentials, isLoggedIn }}
         >
             {children}
         </UserContext.Provider>

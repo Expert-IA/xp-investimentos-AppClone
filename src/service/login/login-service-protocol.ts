@@ -3,4 +3,8 @@ export interface LoginRequest {
     password: string;
 }
 
-export interface LoginResponse { }
+export interface LoginResponse {
+    id: number;
+    name: string;
+    cpf: string
+ }

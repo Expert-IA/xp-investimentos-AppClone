@@ -21,7 +21,7 @@ export default function App() {
 
   return (
     <PaperProvider>
-      {/* <GlobalContext> */}
+      <GlobalContext>
         <ToastManager
           style={{
             fontSize: 12,
@@ -34,7 +34,7 @@ export default function App() {
           }}
         />
         <Navigator />
-      {/* </GlobalContext> */}
+      </GlobalContext>
     </PaperProvider>
   );
 }

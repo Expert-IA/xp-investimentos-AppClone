@@ -6,7 +6,7 @@
     "owner": "XP",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
-    "icon": "./assets/img/app-icon-v.png",
+    "icon": "",
     "splash": {
       "resizeMode": "contain",
       "backgroundColor": "#000000"

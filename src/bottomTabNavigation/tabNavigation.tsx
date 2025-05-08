@@ -1,0 +1,60 @@
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
+import { Ionicons } from "@expo/vector-icons"
+import { Home } from "../components/screen/Home/Home"
+
+// Placeholder components for the new screens
+// You'll want to replace these with your actual screen components
+const CofrinhoScreen = () => null
+const ContaScreen = () => null
+const CarteiraScreen = () => null
+
+const Tab = createBottomTabNavigator()
+
+const TabNavigator = () => {
+  return (
+    <Tab.Navigator
+      initialRouteName="Feed"
+      screenOptions={{
+        tabBarStyle: { backgroundColor: "black", height: 60 },
+        tabBarActiveTintColor: "#3366ff", // Brighter blue color for active tab
+        tabBarInactiveTintColor: "gray",
+        headerShown: false,
+      }}
+    >
+      <Tab.Screen
+        name="Feed"
+        component={Home}
+        options={{
+          tabBarIcon: ({ color, size }) => <Ionicons name="home" color={color} size={size} />,
+          tabBarLabel: "Feed",
+        }}
+      />
+      <Tab.Screen
+        name="Cofrinho"
+        component={CofrinhoScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => <Ionicons name="wallet" color={color} size={size} />,
+          tabBarLabel: "Cofrinho",
+        }}
+      />
+      <Tab.Screen
+        name="Conta"
+        component={ContaScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => <Ionicons name="cash-outline" color={color} size={size} />,
+          tabBarLabel: "Conta",
+        }}
+      />
+      <Tab.Screen
+        name="Carteira"
+        component={CarteiraScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => <Ionicons name="stats-chart" color={color} size={size} />,
+          tabBarLabel: "Carteira",
+        }}
+      />
+    </Tab.Navigator>
+  )
+}
+
+export default TabNavigator

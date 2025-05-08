@@ -35,11 +35,12 @@ export const Login = () => {
 
   const handleLogin = async () => {
     const { userName, password } = users;
-    const isValid = await loginService.login({ userName, password });
+    const user = await loginService.login({ userName, password }); // retorna UserModel se válido
 
-    if (isValid) {
-      await AsyncStorage.setItem("user", JSON.stringify({ userName, password }));
-      navigation.replace("Home");
+    if (user) {
+      await AsyncStorage.setItem("user", JSON.stringify(user));
+      setUserCredentialsContext(user); // Aqui você aciona o contexto
+      navigation.replace("HomeTab");
     } else {
       Toast.error("Usuário ou senha inválidos");
     }
@@ -55,7 +56,7 @@ export const Login = () => {
       .validateUser(token)
       .then(() => {
         setUserCredentialsContext(user);
-        navigation.replace("Home");
+        navigation.replace("HomeTab");
       })
       .catch(() => {
         AsyncStorage.removeItem("user");
@@ -124,13 +125,13 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
   formContainer: {
-    paddingVertical:"15%",
+    paddingVertical: "15%",
     width: "100%",
     backgroundColor: "#131518",
     borderRadius: 12,
     padding: 20,
     marginBottom: 20,
-    alignItems: "center"
+    alignItems: "center",
   },
   input: {
     backgroundColor: "#2a2a2a",
@@ -139,10 +140,10 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     color: "#fff",
     marginBottom: 15,
-    fontSize:20,
+    fontSize: 20,
     width: "80%",
-    height:60,
-    marginVertical: 10
+    height: 60,
+    marginVertical: 10,
   },
   forgotText: {
     color: "#aaa",
@@ -154,8 +155,8 @@ const styles = StyleSheet.create({
     backgroundColor: "#362FFA",
     borderRadius: 16,
     padding: 15,
-    width:160,
-    height:50,
+    width: 160,
+    height: 50,
     alignItems: "center",
   },
   buttonText: {

@@ -15,28 +15,30 @@ import { Toast } from "toastify-react-native";
 import { Login } from "../components/screen/Login/Login";
 import { UserContext } from "../contexts/user-context";
 import { LoginService } from "../service/login/login-service";
+import TabNavigator from "../bottomTabNavigation/tabNavigation";
 const Stack = createStackNavigator();
 
 interface UserCredentials {
   userName: string;
   password: string;
 }
-
 const Navigation = () => {
-  const loginService = new LoginService();
-  const [isConnected, setIsConnected] = useState<boolean | null>(null);
-  const { userCredentials, setUserCredentialsContext, flushCredentials } = useContext(UserContext);
+  const { isLoggedIn } = useContext(UserContext);
 
   return (
     <NavigationContainer>
-        <Stack.Navigator initialRouteName={"Login"}>
-          <Stack.Screen name="Login" options={{ headerShown: false }}>
-            {(props) => (
-              <Login
-              />
-            )}
-          </Stack.Screen>
-        </Stack.Navigator>
+      <Stack.Navigator initialRouteName={isLoggedIn ? "HomeTab" : "Login"}>
+        <Stack.Screen
+          name="Login"
+          options={{ headerShown: false }}
+          component={Login}
+        />
+        <Stack.Screen
+          name="HomeTab"
+          options={{ headerShown: false }}
+          component={TabNavigator}  // TabNavigator aqui
+        />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };

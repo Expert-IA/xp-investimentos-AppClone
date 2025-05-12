@@ -10,6 +10,7 @@ const CarteiraScreen = () => null
 
 const Tab = createBottomTabNavigator()
 
+
 const TabNavigator = () => {
   return (
     <Tab.Navigator

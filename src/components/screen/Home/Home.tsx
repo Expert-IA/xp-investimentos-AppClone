@@ -1,11 +1,33 @@
 import React from "react";
-import { View, StyleSheet, Text, ScrollView } from "react-native";
+import { View, StyleSheet, Text, ScrollView, SafeAreaView } from "react-native";
 import Box from "../../atoms/Box"; // Certifique-se de que o Box está corretamente importado
 import TitleWithLine from "../../atoms/TitleWithUnderline";
 import BalanceBox from "../../molecules/BalanceBox";
 import Notifications from "../../organism/Notifications";
 import EducaSnippet001 from "../../Educa-module/dynamic-components/Educa_snippet_001";
+import EducaArticle002 from "../../Educa-module/dynamic-components/Educa_articles_002";
 export const Home = () => {
+  const articles = [
+    {
+      title: 'Investimentos de alto Risco',
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.',
+      imageSource: {
+        uri: "https://images.pexels.com/photos/1054655/pexels-photo-1054655.jpeg",
+      }    },
+    {
+      title: 'Investimentos de alto Risco',
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.',
+      imageSource: {
+        uri: "https://images.pexels.com/photos/1054655/pexels-photo-1054655.jpeg",
+      }    },
+    {
+      title: 'Investimentos de alto Risco',
+      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.',
+      imageSource: {
+        uri: "https://images.pexels.com/photos/1054655/pexels-photo-1054655.jpeg",
+      }
+        },
+  ];
   return (
     <ScrollView
       style={styles.container}
@@ -56,6 +78,14 @@ export const Home = () => {
           }}
           onSeeMorePress={() => console.log("See more pressed")}
         />
+      </View>
+      <View style={styles.infoContainer}>
+      <SafeAreaView style={styles.container}>
+      <EducaArticle002 
+        sectionTitle="Artigos selecinados" 
+        articles={articles} 
+      />
+    </SafeAreaView>
       </View>
     </ScrollView>
   );

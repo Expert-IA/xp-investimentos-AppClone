@@ -1,18 +1,25 @@
 import React from 'react';
-import { View, StyleSheet, ViewStyle, Dimensions } from 'react-native';
+import { View, StyleSheet, Dimensions, DimensionValue } from 'react-native';
 
 interface BoxProps {
   withBorder?: boolean;
   children: React.ReactNode;
+  width?: DimensionValue; // <- aqui está o fix
 }
+
 const screenWidth = Dimensions.get('window').width;
 
-const Box: React.FC<BoxProps> = ({ withBorder = false, children }) => {
+const Box: React.FC<BoxProps> = ({ withBorder = false, children, width }) => {
+  const boxStyle = {
+    width: width ?? screenWidth * 0.95,
+  };
+
   return (
     <View
       style={[
         styles.box,
-        withBorder && styles.withBorder
+        boxStyle,
+        withBorder && styles.withBorder,
       ]}
     >
       {children}
@@ -25,7 +32,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#0F0F10',
     padding: 16,
     borderRadius: 14,
-    width: screenWidth * 0.95,
   },
   withBorder: {
     borderWidth: 1.5,

@@ -3,7 +3,6 @@ import { View, Text, Image, StyleSheet, ScrollView, Dimensions } from 'react-nat
 import Box from '../../../atoms/Box';
 import TitleWithLine from '../../../atoms/TitleWithUnderline';
 
-// Types
 interface Article {
   title: string;
   content: string;
@@ -15,16 +14,16 @@ interface ArticleCarouselProps {
   articles: Article[];
 }
 
-// Constants
 const { width: WINDOW_WIDTH } = Dimensions.get('window');
-const CARD_WIDTH = WINDOW_WIDTH * 0.5; // Wider cards for better readability
-const CARD_MARGIN = 105; // Fixed margin for consistent spacing
-const CARD_TOTAL_WIDTH = CARD_WIDTH + CARD_MARGIN * 2; // Margin on both sides
+const CARD_MARGIN = 12;
+const CARD_WIDTH = WINDOW_WIDTH -50;
 
-// Sub-component: ArticleCard
+
+const CARD_TOTAL_WIDTH = CARD_WIDTH + CARD_MARGIN * 2;
+
 const ArticleCard: React.FC<Article> = ({ title, content, imageSource }) => (
   <View style={styles.cardContainer}>
-    <Box withBorder>
+    <Box withBorder width={WINDOW_WIDTH * 0.85}>
       <Image 
         source={imageSource} 
         style={styles.cardImage} 
@@ -40,53 +39,48 @@ const ArticleCard: React.FC<Article> = ({ title, content, imageSource }) => (
   </View>
 );
 
-// Main Component
 const EducaArticle002: React.FC<ArticleCarouselProps> = ({ sectionTitle, articles }) => {
   return (
-    <View style={styles.container}>
+    <View style={{padding: 10}}>
       <TitleWithLine title={sectionTitle} />
       
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.scrollContent}
-       snapToAlignment="center"
-        decelerationRate="fast"
-      >
-        {/* Left padding */}
-        <View style={{ width: (WINDOW_WIDTH - CARD_WIDTH) / 2 - CARD_MARGIN }} />        
-        {articles.map((article, index) => (
-          <View 
-            key={`article-${index}`} 
-            style={styles.cardWrapper}
-          >
-            <ArticleCard {...article} />
-          </View>
-        ))}
-        
-        {/* Right padding */}
-        <View style={{ width: CARD_MARGIN }} />
-      </ScrollView>
+<ScrollView
+  horizontal
+  showsHorizontalScrollIndicator={false}
+  snapToInterval={WINDOW_WIDTH}
+  decelerationRate="fast"
+  snapToAlignment="start"
+  alwaysBounceHorizontal= {true}
+  
+>
+
+  {articles.map((article, index) => (
+    <ArticleCard key={index} {...article} />
+  ))}
+  <View style={{ width: CARD_MARGIN }} />
+</ScrollView>
     </View>
   );
 };
 
 // Styles
 const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    backgroundColor: '#0F0F10',
-    paddingVertical: 24,
-  },
-  scrollContent: {
-    alignItems: 'center',
-  },
+
+scrollContent: {
+  flexDirection: 'row',
+  alignItems: 'flex-start', // ou 'stretch' se quiser preencher verticalmente
+  
+},
+
   cardWrapper: {
     marginHorizontal: CARD_MARGIN,
   },
   cardContainer: {
-    width: CARD_WIDTH,
-  },
+    width: WINDOW_WIDTH-5,
+    alignItems: "center",
+  resizeMode: "contain"  
+},
+
   cardImage: {
     width: '100%',
     height: 180, // Taller image

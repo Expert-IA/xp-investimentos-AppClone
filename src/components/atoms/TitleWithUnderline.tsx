@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: 'flex-start',
     flexDirection:'column',
+    margin:30
   },
   title: {
     fontSize: 24,

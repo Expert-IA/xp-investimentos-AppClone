@@ -1,6 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { Ionicons } from "@expo/vector-icons"
-import { Home } from "../components/screen/Home/Home"
+import { Home } from "../components/screen/Home"
+import { Conta } from "../components/screen/Conta"
 
 // Placeholder components for the new screens
 // You'll want to replace these with your actual screen components
@@ -40,7 +41,7 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="Conta"
-        component={ContaScreen}
+        component={Conta}
         options={{
           tabBarIcon: ({ color, size }) => <Ionicons name="cash-outline" color={color} size={size} />,
           tabBarLabel: "Conta",

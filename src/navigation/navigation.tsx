@@ -12,7 +12,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { Toast } from "toastify-react-native";
-import { Login } from "../components/screen/Login/Login";
+import { Login } from "../components/screen/Login";
 import { UserContext } from "../contexts/user-context";
 import { LoginService } from "../service/login/login-service";
 import TabNavigator from "../bottomTabNavigation/tabNavigation";

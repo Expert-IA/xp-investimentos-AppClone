@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text, ScrollView, SafeAreaView, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Text, ScrollView, SafeAreaView, TouchableOpacity, Dimensions, Image } from "react-native";
 import Box from "../../atoms/Box"; // Certifique-se de que o Box está corretamente importado
 import TitleWithLine from "../../atoms/TitleWithUnderline";
 import BalanceBox from "../../molecules/BalanceBox";
@@ -11,24 +11,44 @@ export const Conta = () => {
   const articles = [
     {
       title: 'Investimentos de alto Risco',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.',
+      filter: 'Investimentos',
       imageSource: {
         uri: "https://images.pexels.com/photos/1054655/pexels-photo-1054655.jpeg",
-      }    },
+      }    
+    },
     {
       title: 'Investimentos de alto Risco',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.',
+      filter: 'Investimentos',
       imageSource: {
         uri: "https://images.pexels.com/photos/1054655/pexels-photo-1054655.jpeg",
-      }    },
+      }    
+    },
     {
       title: 'Investimentos de alto Risco',
-      content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.',
+      filter: 'Investimentos',
       imageSource: {
         uri: "https://images.pexels.com/photos/1054655/pexels-photo-1054655.jpeg",
-      }
-        },
+      }    
+    },
+    {
+      title: 'Investimentos de alto Risco',
+      filter: 'Investimentos',
+      imageSource: {
+        uri: "https://images.pexels.com/photos/1054655/pexels-photo-1054655.jpeg",
+      }    
+    },
+    {
+      title: 'Investimentos de alto Risco',
+      filter: 'Investimentos',
+      imageSource: {
+        uri: "https://images.pexels.com/photos/1054655/pexels-photo-1054655.jpeg",
+      }    
+    },
   ];
+  let WINDOW_WIDTH = Dimensions.get('window').width;
+let CARD_WIDTH = WINDOW_WIDTH * 0.8;
+const CARD_HEIGHT = 200;
+const CARD_MARGIN = 16;
   return (
     <ScrollView
       style={styles.container}
@@ -67,6 +87,28 @@ export const Conta = () => {
         <Text style={styles.label}>Extrato</Text>
       </TouchableOpacity>
     </View>
+         
+    <ScrollView
+      horizontal
+      showsHorizontalScrollIndicator={false}
+      decelerationRate="fast"
+      snapToAlignment="start"
+      alwaysBounceHorizontal= {true}
+      
+    >
+    
+    {articles.map((article, index) => (
+        <View key={index} style={styles.card}>
+          <Image
+            source={article.imageSource}
+            style={styles.image}
+            resizeMode="cover"
+          />
+        </View>
+      ))}
+      <View style={{ width: CARD_MARGIN }} />
+    </ScrollView>
+
       <Notifications
         data={[
           {
@@ -95,6 +137,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#181A1D", // apenas aparência visual
+  },
+  card: {
+    width: Dimensions.get('window').width * 0.3,
+    height: 200,
+    borderWidth: 2,
+    borderColor: '#362FFA',
+    borderRadius: 12,
+    overflow: 'hidden',
+    marginRight: 20,
+  },
+  image: {
+    width: '100%',
+    height: '100%',
   },
   nameBox:{
 backgroundColor: "#362FFA",

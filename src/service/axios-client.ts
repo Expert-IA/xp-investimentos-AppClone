@@ -5,7 +5,7 @@ class AxiosClient {
     isFormData: boolean = false
   ): Promise<AxiosInstance> {
     const axiosInstance = axios.create({
-      baseURL: "http://10.0.2.2:8080/",
+      baseURL: "https://expert-ia-dev-epbucva2bseadxbt.eastus-01.azurewebsites.net",
     });
 
     // // Se for FormData, não define Content-Type manualmente

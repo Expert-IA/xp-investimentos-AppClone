@@ -3,26 +3,25 @@ import { AxiosClient } from "../axios-client";
 import { LoginResponse, LoginRequest } from "./login-service-protocol";
 
 export class LoginService {
-    // private path: string;
+    private path: string;
 
-    // private axiosClientWrapper: AxiosClient;
+    private axiosClientWrapper: AxiosClient;
 
-    // constructor() {
-    //     this.path = `/login`;
-    //     this.axiosClientWrapper = new AxiosClient()
-    // }
+    constructor() {
+        this.path = `/auth/login`;
+        this.axiosClientWrapper = new AxiosClient()
+    }
 
     // async login(auth: LoginRequest): Promise<any> {
-    //     const response = await (await this.axiosClientWrapper.buildAxiosWithHeaders()).post(`${this.path}`, {
-    //         userName: auth.userName,
-    //         password: auth.password,
-    //     })
-
-    //     await AsyncStorage.setItem('user', JSON.stringify(response.data.user))
-    //     await AsyncStorage.setItem('token', JSON.stringify(response.data.token))
-
-    //     return response.data;
+    //   const axiosInstance = await this.axiosClientWrapper.buildAxiosWithHeaders();
+    //   const response = await axiosInstance.post(this.path,{
+    //     login: auth.userName,
+    //     password: auth.password
+    //   });
+    //   console.log(response.data);
+    //   return response.data;
     // }
+    
 
     // async validateUser(token: string): Promise<any> {
     //     (await this.axiosClientWrapper.buildAxiosWithHeaders()).defaults.headers["Authorization"] = `Bearer ${token}`
@@ -56,11 +55,11 @@ export class LoginService {
         }
       }
     
-      async validateUser(token: string): Promise<any> {
-        if (token === this.mockToken) {
-          return this.mockUser;
-        } else {
-          throw new Error("Token inválido");
-        }
-      }
+    //   async validateUser(token: string): Promise<any> {
+    //     if (token === this.mockToken) {
+    //       return this.mockUser;
+    //     } else {
+    //       throw new Error("Token inválido");
+    //     }
+    //   }
 }

@@ -14,7 +14,7 @@ export const Home = () => {
     {
       code: "EDU_SNIPPET_001",
       props: {
-        title: "O que é Tesouro Direto?",
+        title: " Direto?",
         content:
           "O Tesouro Direto é uma forma segura e acessível de investir em títulos públicos emitidos pelo governo. Ideal para iniciantes.",
         imageSource: { uri: "https://example.com/tesouro-direto.png" },

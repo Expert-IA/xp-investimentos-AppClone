@@ -52,16 +52,16 @@ export const Login = () => {
     const userStorage = await AsyncStorage.getItem("user");
     const user = userStorage ? JSON.parse(userStorage) : null;
 
-    await loginService
-      .validateUser(token)
-      .then(() => {
-        setUserCredentialsContext(user);
-        navigation.replace("HomeTab");
-      })
-      .catch(() => {
-        AsyncStorage.removeItem("user");
-        AsyncStorage.removeItem("token");
-      });
+    // await loginService
+    //   .validateUser(token)
+    //   .then(() => {
+    //     setUserCredentialsContext(user);
+    //     navigation.replace("HomeTab");
+    //   })
+    //   .catch(() => {
+    //     AsyncStorage.removeItem("user");
+    //     AsyncStorage.removeItem("token");
+    //   });
   };
 
   useEffect(() => {

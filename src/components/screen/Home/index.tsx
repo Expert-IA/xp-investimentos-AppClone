@@ -2,6 +2,7 @@ import React from "react";
 import { View, StyleSheet, Text, ScrollView, SafeAreaView } from "react-native";
 import DynamicRenderer from "../../Educa-module/DynamicRenderer";
 import TitleWithLine from "../../atoms/TitleWithUnderline";
+import InvestimentList from "../../organism/InvestimentList";
 
 export const Home = () => {
   const handlers = {
@@ -96,6 +97,7 @@ export const Home = () => {
       },
     },
   ];
+
   return (
     <SafeAreaView style={styles.safeArea}>
       <ScrollView 
@@ -114,6 +116,7 @@ export const Home = () => {
             </View>
           ))}
         </View>
+        <InvestimentList></InvestimentList>
       </ScrollView>
     </SafeAreaView>
   );

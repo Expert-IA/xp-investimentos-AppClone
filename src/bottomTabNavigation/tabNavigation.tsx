@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import { Ionicons } from "@expo/vector-icons"
 import { Home } from "../components/screen/Home"
 import { Conta } from "../components/screen/Conta"
+import { Cofrinho } from "../components/screen/Cofrinho"
 
 // Placeholder components for the new screens
 // You'll want to replace these with your actual screen components
@@ -33,7 +34,7 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="Cofrinho"
-        component={CofrinhoScreen}
+        component={Cofrinho}
         options={{
           tabBarIcon: ({ color, size }) => <Ionicons name="wallet" color={color} size={size} />,
           tabBarLabel: "Cofrinho",

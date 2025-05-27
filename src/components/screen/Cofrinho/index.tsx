@@ -16,7 +16,8 @@ import Notifications from "../../organism/Notifications";
 import EducaSnippet001 from "../../Educa-module/dynamic-components/Educa_snippet_001";
 import EducaArticle002 from "../../Educa-module/dynamic-components/Educa_articles_002";
 import { Ionicons } from "@expo/vector-icons";
-export const Conta = () => {
+import GoalsSection from "../../molecules/GoalsSection";
+export const Cofrinho = () => {
   const articles = [
     {
       title: "Investimentos de alto Risco",
@@ -63,61 +64,20 @@ export const Conta = () => {
       style={styles.container}
       contentContainerStyle={styles.contentContainer}
     >
-      <View style={styles.nameBox}>
-        <Text style={{ color: "#ffffff", fontSize: 20, marginTop: 30 }}>
-          Bem Vindo ADMIN
-        </Text>
-      </View>
-      <TitleWithLine title="Conta" />
-      <BalanceBox title="Saldo" value={30.32} showValue={true} />
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.item}>
-          <View style={styles.iconBox}>
-            <Ionicons name="bar-chart-outline" size={28} color="#362FFA" />
-          </View>
-          <Text style={styles.label}>Investir</Text>
-        </TouchableOpacity>
+      <TitleWithLine title="Cofrinhos" />
 
-        <TouchableOpacity style={styles.item}>
-          <View style={styles.iconBox}>
-            <Ionicons name="swap-horizontal" size={28} color="#362FFA" />
-          </View>
-          <Text style={styles.label}>Ted</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.item}>
-          <View style={styles.iconBox}>
-            <Ionicons name="calendar" size={28} color="#362FFA" />
-          </View>
-          <Text style={styles.label}>Agendamento</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.item}>
-          <View style={styles.iconBox}>
-            <Ionicons name="receipt" size={28} color="#362FFA" />
-          </View>
-          <Text style={styles.label}>Extrato</Text>
-        </TouchableOpacity>
-      </View>
-
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        decelerationRate="fast"
-        snapToAlignment="start"
-        alwaysBounceHorizontal={true}
-      >
-        {articles.map((article, index) => (
-          <View key={index} style={styles.card}>
-            <Image
-              source={article.imageSource}
-              style={styles.image}
-              resizeMode="cover"
-            />
-          </View>
-        ))}
-        <View style={{ width: CARD_MARGIN }} />
-      </ScrollView>
+      <BalanceBox title="Total nas caixinhas" value={1000.5} showValue={true} />
+      <GoalsSection
+  title="Metas"
+  chartData={[500, 700, 1000, 900, 1200, 1400, 1300]}
+chartLabels={["jan", "fev", "mar", "abr", "mai", "jun", "jul"]}
+  message="Nesse último mês você adicionou R$5000 reais nas suas caixinhas..."
+  goalName="Primeiro Carro"
+  currentAmount={500}
+  goalAmount={5000}
+  goalImage={"uri : https://images.pexels.com/photos/1054655/pexels-photo-1054655.jpeg"
+  }
+/>
 
       <Notifications
         data={[
@@ -127,6 +87,34 @@ export const Conta = () => {
             entity: "Empresa LTDA",
             bank: "Banco Nome S.A",
             document: "00.000.000/0000-00",
+          },
+          {
+            type: "enviada",
+            value: "250,00",
+            entity: "João Silva",
+            bank: "Banco XPTO",
+            document: "111.111.111-11",
+          },
+          {
+            type: "enviada",
+            value: "250,00",
+            entity: "João Silva",
+            bank: "Banco XPTO",
+            document: "111.111.111-11",
+          },
+          {
+            type: "enviada",
+            value: "250,00",
+            entity: "João Silva",
+            bank: "Banco XPTO",
+            document: "111.111.111-11",
+          },
+          {
+            type: "enviada",
+            value: "250,00",
+            entity: "João Silva",
+            bank: "Banco XPTO",
+            document: "111.111.111-11",
           },
           {
             type: "enviada",
@@ -189,6 +177,7 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
   contentContainer: {
+    justifyContent: "center",
     paddingBottom: 20,
   },
   text: {

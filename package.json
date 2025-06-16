@@ -34,6 +34,7 @@
     "expo-tracking-transparency": "~4.0.2",
     "lodash": "^4.17.21",
     "native-notify": "^4.0.4",
+    "netinfo": "^0.1.3",
     "react": "18.2.0",
     "react-native": "0.74.5",
     "react-native-fs": "^2.20.0",

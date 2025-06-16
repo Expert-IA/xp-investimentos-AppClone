@@ -279,7 +279,7 @@ const styles = StyleSheet.create({
     padding: 8,
     borderRadius: 6,
     borderWidth: 1,
-    borderColor: '#4A90E2',
+    borderColor: '#362FFA',
     maxWidth: 120,
   },
   tipText: {
@@ -310,7 +310,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   followButton: {
-    backgroundColor: '#4A90E2',
+    backgroundColor: '#362FFA',
     paddingHorizontal: 16,
     paddingVertical: 8,
     borderRadius: 6,

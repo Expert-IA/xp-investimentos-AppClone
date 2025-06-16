@@ -24,7 +24,7 @@ const Box: React.FC<BoxProps> = ({
   children,
   width,
   height,
-  backgroundColor = '#0F0F10',
+  backgroundColor = '#080808',
   style,
 }) => {
   const boxStyle: ViewStyle = {

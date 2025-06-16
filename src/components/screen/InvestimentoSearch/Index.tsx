@@ -15,7 +15,7 @@ const filtros = ['Todos', 'Ações', 'Criptomoedas', 'Imóveis', 'Commodities'];
 const InvestmentSearchScreen = () => {
   const route = useRoute<RouteType>();
   const initialFilter = route.params?.initialFilter || 'Todos';
-
+  console.log(initialFilter)
   const [searchText, setSearchText] = useState('');
   const [filtroAtivo, setFiltroAtivo] = useState(initialFilter);
 

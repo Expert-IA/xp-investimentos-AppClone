@@ -79,7 +79,6 @@ const categoriasMock = [
     <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 30 }}>
               <TitleWithLine title="Investimentos" />
 
-      {/* VALOR TOTAL */}
       <Box style={styles.cardBlue}>
         <Text style={styles.saldoTitulo}>Valor Total da Carteira</Text>
         <Text style={styles.saldoValor}>R$ <Text style={styles.value}>187.450,32</Text></Text>
@@ -87,13 +86,12 @@ const categoriasMock = [
 
       </Box>
 
-      {/* ALOCAÇÃO POR CATEGORIA */}
       <TitleWithLine title="Alocação por Categoria" />
 <View style={styles.categoriasGrid}>
   {categoriasMock.map((item, index) => (
     <TouchableOpacity
       key={index}
-      onPress={() => navigation.navigate('InvestimentoSearch', { initialFilter: item.nome.toLowerCase() })}
+      onPress={() => navigation.navigate('InvestimentoSearch', { initialFilter: item.nome })}
     >
       <Box withBorder style={styles.categoriaItem}>
         <Text style={[styles.categoriaIcon, { backgroundColor: item.cor }]}>{item.icone}</Text>

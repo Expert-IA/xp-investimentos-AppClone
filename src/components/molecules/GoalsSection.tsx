@@ -27,7 +27,7 @@ const GoalsSection: React.FC<GoalsSectionProps> = ({
   goalImage,
 }) => {
   return (
-    <Box withBorder>
+    <Box >
       <View style={styles.container}>
         <TitleWithUnderline title={title} />
         <GoalsChart data={chartData} labels={chartLabels} />

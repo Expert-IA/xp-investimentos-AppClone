@@ -115,7 +115,7 @@ const cofrinhos = [
   showValue={true}
 />
 <View style={{ marginVertical: 20 }}>
-  <Text style={styles.text}>Seus Cofrinhos</Text>
+  <TitleWithLine title="Seus Cofrinhos"/>
   <ScrollView
     horizontal
     showsHorizontalScrollIndicator={false}

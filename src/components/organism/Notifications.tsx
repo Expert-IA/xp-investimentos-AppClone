@@ -45,7 +45,7 @@ const Notifications: React.FC<NotificationsProps> = ({ data, piggyData }) => {
 
       {piggyData && piggyData.length > 0 && (
         <>
-          <TitleWithUnderline title="Movimentações nas Caixinhas" />
+          <TitleWithUnderline title="Notificações nas Caixinhas" />
           {piggyData.map((item, index) => (
             <View key={`piggy-${index}`} style={styles.notificationWrapper}>
               <PiggyNotificationBox

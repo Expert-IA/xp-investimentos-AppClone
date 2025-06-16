@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import CandleStickChart from '../atoms/CandleStickChart';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { InvestimentoStackParamListType, RootStackParamListType } from '../../types/types'; // ajuste o caminho se necessário
 
 const { width: screenWidth } = Dimensions.get('window');
 
@@ -11,7 +14,17 @@ interface InvestmentCardProps {
   price: string;
   growth: string;
   growthValue: string;
-  chartData: { open: number; close: number; high: number; low: number }[];
+  chartData: {
+    open: number;
+    close: number;
+    high: number;
+    low: number;
+  }[];
+  acoes: number;
+  precoMedio: number;
+  valorTotal: number;
+  resultado: number;
+  resultadoPercentual: number;
 }
 
 const InvestmentCard: React.FC<InvestmentCardProps> = ({
@@ -22,7 +35,14 @@ const InvestmentCard: React.FC<InvestmentCardProps> = ({
   growth,
   growthValue,
   chartData,
+  acoes,
+  precoMedio,
+  valorTotal,
+  resultado,
+  resultadoPercentual
 }) => {
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamListType>>();
+
   const [expanded, setExpanded] = useState(false);
   const isPositive = !growth.startsWith('-');
 
@@ -33,7 +53,6 @@ const InvestmentCard: React.FC<InvestmentCardProps> = ({
           {/* Header Row */}
           <View style={styles.expandedHeader}>
             <View style={styles.leftSection}>
-              <Image source={{ uri: logo }} style={styles.expandedLogo} />
               <View style={styles.headerText}>
                 <Text style={styles.expandedTitle}>{title}</Text>
                 <Text style={styles.expandedDescription}>{description}</Text>
@@ -41,7 +60,7 @@ const InvestmentCard: React.FC<InvestmentCardProps> = ({
                   Valor da ação: <Text style={styles.stockPrice}>R$ {price}</Text>
                 </Text>
                 <Text style={styles.growthText}>
-                  Crescimento de {growth} ou R${growthValue}
+                  Crescimento de {growth} ou R${growthValue} {isPositive ? '↗' : '↘'}
                 </Text>
                 <Text style={styles.afterGrowthText}>
                   Valor da ação após crescimento é de{' '}
@@ -52,10 +71,7 @@ const InvestmentCard: React.FC<InvestmentCardProps> = ({
             
             <View style={styles.rightSection}>
               <View style={styles.priceContainer}>
-                <Text style={styles.mainPrice}>R$ {price}</Text>
-                <Text style={[styles.mainGrowth, { color: isPositive ? '#00C851' : '#FF3B30' }]}>
-                  {isPositive ? '↗' : '↘'} +{growth}
-                </Text>
+
               </View>
               
               <View style={styles.investmentTip}>
@@ -82,9 +98,31 @@ const InvestmentCard: React.FC<InvestmentCardProps> = ({
 
           {/* Bottom Section */}
           <View style={styles.bottomSection}>
-            <TouchableOpacity style={styles.followButton}>
-              <Text style={styles.followButtonText}>Acompanhe</Text>
-            </TouchableOpacity>
+<TouchableOpacity
+  style={styles.followButton}
+  onPress={() =>
+navigation.navigate('Carteira', {
+  screen: 'InvestimentoDetails',
+  params: {
+    nome: title,
+    empresa: description,
+    precoAtual: parseFloat(price),
+    variacao: parseFloat(growthValue),
+    variacaoPercentual: parseFloat(growth),
+    acoes,
+    precoMedio,
+    valorTotal,
+    resultado,
+    resultadoPercentual,
+    chartData,
+  }
+})
+  }
+>
+  <Text style={styles.followButtonText}>Acompanhe</Text>
+</TouchableOpacity>
+
+
           </View>
 
         </View>
@@ -154,7 +192,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   compactGrowth: {
-    fontSize: 11,
+    fontSize: 10,
     marginTop: 2,
   },
 
@@ -164,7 +202,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     marginVertical: 4,
     borderWidth: 2,
-    borderColor: '#4A90E2',
+    borderColor: '#362FFA',
     overflow: 'hidden',
   },
   expandedContent: {
@@ -208,7 +246,7 @@ const styles = StyleSheet.create({
   },
   growthText: {
     color: '#00C851',
-    fontSize: 12,
+    fontSize: 14,
     marginBottom: 4,
   },
   afterGrowthText: {

@@ -10,29 +10,57 @@ interface NotificationData {
   bank: string;
   document: string;
 }
-
-interface NotificationsProps {
-  data: NotificationData[];
+interface PiggyNotificationData {
+  type: "transferido" | "retirado";
+  value: string;
+  piggyName: string;
 }
 
-const Notifications: React.FC<NotificationsProps> = ({ data }) => {
+interface NotificationsProps {
+  data?: NotificationData[];
+  piggyData?: PiggyNotificationData[];
+
+}
+import PiggyNotificationBox from "../molecules/PiggyNotificationBox";
+
+const Notifications: React.FC<NotificationsProps> = ({ data, piggyData }) => {
   return (
     <View>
-        <TitleWithUnderline title="Notificações"></TitleWithUnderline>
-      {data.map((item, index) => (
-        <View key={index} style={styles.notificationWrapper}>
-          <NotificationBox
-            type={item.type}
-            value={item.value}
-            entityName={item.entity}
-            bankName={item.bank}
-            document={item.document}
-          />
-        </View>
-      ))}
+{data && data.length > 0 && (
+  <>
+    <TitleWithUnderline title="Notificações de Transações" />
+    {data.map((item, index) => (
+      <View key={`trans-${index}`} style={styles.notificationWrapper}>
+        <NotificationBox
+          type={item.type}
+          value={item.value}
+          entityName={item.entity}
+          bankName={item.bank}
+          document={item.document}
+        />
+      </View>
+    ))}
+  </>
+)}
+
+      {piggyData && piggyData.length > 0 && (
+        <>
+          <TitleWithUnderline title="Movimentações nas Caixinhas" />
+          {piggyData.map((item, index) => (
+            <View key={`piggy-${index}`} style={styles.notificationWrapper}>
+              <PiggyNotificationBox
+                type={item.type}
+                value={item.value}
+                piggyName={item.piggyName}
+              />
+            </View>
+          ))}
+        </>
+      )}
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   notificationWrapper: {

@@ -1,20 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { getComponentByCode } from "./dynamic-components";
 
 type Props = {
   code: string;
   props?: any;
+  uniqueKey?: string; // Adicione esta prop
 };
 
-const DynamicRenderer: React.FC<Props> = ({ code, props }) => {
-  useEffect(() => {
-    console.log("Renderizando:", code, props);
-  }, [props, code]);
+const DynamicRenderer: React.FC<Props> = ({ code, props, uniqueKey }) => {
+  const Component = useMemo(() => getComponentByCode(code), [code]);
   
-  const Component = getComponentByCode(code);
   if (!Component) return null;
 
-  return <Component {...props} />;
+  return <Component key={uniqueKey} {...props} />;
 };
 
 export default DynamicRenderer;

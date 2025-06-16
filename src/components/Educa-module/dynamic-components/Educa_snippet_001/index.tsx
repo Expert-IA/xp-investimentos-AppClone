@@ -2,29 +2,43 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import Box from '../../../atoms/Box';
 import TitleWithLine from '../../../atoms/TitleWithUnderline';
+import { NativeStackNavigationProp } from 'react-native-screens/lib/typescript/native-stack/types';
+import { FeedStackParamList } from '../../../../types/types';
+import { useNavigation } from '@react-navigation/native';
 
 
 interface InfoBoxProps {
   title: string;
-  content: string;
-  imageSource: any; // Can be require('./path') or { uri: 'url' }
-  onSeeMorePress?: () => void;
-  seeMoreText?: string;
+  subtitle: string;
+  content: string; // Conteúdo completo vai para a tela de detalhes
+  imageSource: any;
+  source?: string;
 }
 
 const EducaSnippet001: React.FC<InfoBoxProps> = ({
   title,
+  subtitle,
   content,
   imageSource,
-  onSeeMorePress,
-  seeMoreText = 'Ver mais'
+  source
 }) => {
+  const navigation = useNavigation<NativeStackNavigationProp<FeedStackParamList>>();
+
+  const handleSeeMore = () => {
+    navigation.navigate('EducaArticleDetail', {
+      title,
+      content,
+      imageSource,
+      source,
+    } as never);
+  };
+
   return (
     <Box withBorder={false}>
+          <TitleWithLine title={title}/>
       <View style={styles.container}>
         <View style={styles.leftContent}>
-          <TitleWithLine title={title} />
-          <Text style={styles.contentText}>{content}</Text>
+          <Text style={styles.contentText}>{subtitle}</Text>
         </View>
         <View style={styles.rightContent}>
           <Image 
@@ -34,11 +48,8 @@ const EducaSnippet001: React.FC<InfoBoxProps> = ({
           />
         </View>
       </View>
-      <TouchableOpacity 
-        style={styles.seeMoreContainer} 
-        onPress={onSeeMorePress}
-      >
-        <Text style={styles.seeMoreText}>{seeMoreText}</Text>
+    <TouchableOpacity style={styles.seeMoreContainer} onPress={handleSeeMore}>
+        <Text style={styles.seeMoreText}>Ver mais</Text>
       </TouchableOpacity>
     </Box>
   );
@@ -63,12 +74,12 @@ const styles = StyleSheet.create({
   contentText: {
     color: '#ffffff',
     marginTop: 12,
-    fontSize: 16,
+    fontSize: 13,
     lineHeight: 22,
   },
   image: {
     width: '100%',
-    height: 200,
+    height: 100,
     borderRadius: 8,
   },
   seeMoreContainer: {

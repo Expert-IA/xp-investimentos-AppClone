@@ -5,7 +5,7 @@ import {
 } from "react-native-paper";
 import { GlobalContext } from "./src/contexts/global-context";
 import { requestTrackingPermissionsAsync } from "expo-tracking-transparency";
-import Navigator from "./src/navigation/navigation";
+import Navigator from "./src/navigation/Navigation/navigation";
 import "react-native-gesture-handler";
 import ToastManager from "toastify-react-native";
 

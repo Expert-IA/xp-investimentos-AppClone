@@ -3,13 +3,16 @@ import { View, Text, StyleSheet } from 'react-native';
 
 interface TitleWithLineProps {
   title: string;
+  fontSize?: number; // Opcional
 }
 
-const TitleWithLine: React.FC<TitleWithLineProps> = ({ title }) => {
+const TitleWithLine: React.FC<TitleWithLineProps> = ({ title, fontSize = 24 }) => {
+    const lineWidth = Math.min(300, title.length * fontSize * 0.65); // limite máximo para não exagerar
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
-      <View style={styles.line} />
+      <Text style={[styles.title, { fontSize }]}>{title}</Text>
+      <View style={[styles.line, { width: lineWidth }]} />
     </View>
   );
 };
@@ -17,22 +20,20 @@ const TitleWithLine: React.FC<TitleWithLineProps> = ({ title }) => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'flex-start',
-    flexDirection:'column',
-    margin:10
+    flexDirection: 'column',
+    margin: 12,
   },
   title: {
-    fontSize: 24,
     fontWeight: 'bold',
-  color: '#ffffff', 
+    color: '#ffffff',
   },
-  line: {
-  marginVertical: 3,
+line: {
+  marginTop: 3,
   borderBottomWidth: 3,
   borderBottomColor: '#362FFA',
   paddingBottom: 4,
-  alignSelf: 'stretch',
-  width: 100
-  },
+},
+
 });
 
 export default TitleWithLine;

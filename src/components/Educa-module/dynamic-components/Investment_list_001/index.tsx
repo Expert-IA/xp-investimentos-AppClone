@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
-import InvestmentCard from '../molecules/InvestimentCard';
-import TitleWithLine from '../atoms/TitleWithUnderline';
-import Box from '../atoms/Box';
+import Box from '../../../atoms/Box';
+import TitleWithLine from '../../../atoms/TitleWithUnderline';
+import InvestmentCard from '../../../molecules/InvestimentCard';
 
 interface InvestmentData {
   logo: string;
@@ -22,25 +22,32 @@ interface InvestmentData {
   valorTotal: number;
   resultado: number;
   resultadoPercentual: number;
+  type? : string;
 }
+
 
 interface InvestmentsListProps {
   data: InvestmentData[];
-}
+  showTitle?: boolean; // novo prop
+  uniqueKey?: string;
 
-const InvestmentsList: React.FC<InvestmentsListProps> = ({ data }) => {
+  }
+
+const InvestmentList001: React.FC<InvestmentsListProps> = ({ data, showTitle = true }) => {
   return (
     <Box>
-      <View style={styles.header}>
-        <TitleWithLine title="Investimentos em alta" />
-      </View>
-      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+      {showTitle && (
+        <View style={styles.header}>
+          <TitleWithLine title="Investimentos em alta" />
+        </View>
+      )}
+      <View style={styles.scrollView}>
         <View style={styles.list}>
           {data.map((investment, index) => (
-            <InvestmentCard key={index} {...investment} />
+             <InvestmentCard key={`${investment.title}_${index}`} {...investment} />
           ))}
         </View>
-      </ScrollView>
+      </View>
     </Box>
   );
 };
@@ -57,4 +64,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default InvestmentsList;
+export default InvestmentList001;

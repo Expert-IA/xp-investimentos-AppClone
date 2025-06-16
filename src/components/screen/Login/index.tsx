@@ -16,7 +16,7 @@ import { LoginService } from "../../../service/login/login-service";
 import { UserContext } from "../../../contexts/user-context";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamListType } from "../../../types/types";
-// import logo from "../../../../assets/img/logo.png";
+import logo from "../../../../assets/img/logo.png";
 interface UserCredentials {
   userName: string;
   password: string;
@@ -74,7 +74,7 @@ export const Login = () => {
       behavior={Platform.OS === "ios" ? "padding" : undefined}
     >
       <Image
-        // source={logo}
+        source={logo}
         style={styles.logo}
       />
 
@@ -120,8 +120,8 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   logo: {
-    width: 100,
-    height: 100,
+    width: 200,
+    height: 200,
     resizeMode: "contain",
   },
   formContainer: {

@@ -3,7 +3,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import bcrypt from "bcryptjs";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import NetInfo, { NetInfoState } from "@react-native-community/netinfo";
 import {
   View,
   StyleSheet,
@@ -12,10 +11,10 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { Toast } from "toastify-react-native";
-import { Login } from "../components/screen/Login";
-import { UserContext } from "../contexts/user-context";
-import { LoginService } from "../service/login/login-service";
-import TabNavigator from "../bottomTabNavigation/tabNavigation";
+import { Login } from "../../components/screen/Login";
+import { UserContext } from "../../contexts/user-context";
+import { LoginService } from "../../service/login/login-service";
+import TabNavigator from "../../bottomTabNavigation/tabNavigation";
 const Stack = createStackNavigator();
 
 interface UserCredentials {

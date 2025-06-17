@@ -16,7 +16,7 @@ import { LoginService } from "../../../service/login/login-service";
 import { UserContext } from "../../../contexts/user-context";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamListType } from "../../../types/types";
-import logo from "../../../../assets/img/logo.png";
+import logo from "../../../../assets/img/logo.png"
 interface UserCredentials {
   userName: string;
   password: string;
@@ -35,11 +35,10 @@ export const Login = () => {
 
   const handleLogin = async () => {
     const { userName, password } = users;
-    const user = await loginService.login({ userName, password }); // retorna UserModel se válido
-
+    const user = await loginService.login({ userName, password }); 
     if (user) {
       await AsyncStorage.setItem("user", JSON.stringify(user));
-      setUserCredentialsContext(user); // Aqui você aciona o contexto
+      setUserCredentialsContext(user);
       navigation.replace("HomeTab");
     } else {
       Toast.error("Usuário ou senha inválidos");

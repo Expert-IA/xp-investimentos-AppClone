@@ -56,35 +56,7 @@ export const Conta = () => {
       </View>
       <TitleWithLine title="Conta" />
       <BalanceBox title="Saldo" value={30.32} showValue={true} />
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.item}>
-          <View style={styles.iconBox}>
-            <Ionicons name="bar-chart-outline" size={28} color="#362FFA" />
-          </View>
-          <Text style={styles.label}>Investir</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.item}>
-          <View style={styles.iconBox}>
-            <Ionicons name="swap-horizontal" size={28} color="#362FFA" />
-          </View>
-          <Text style={styles.label}>Ted</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.item}>
-          <View style={styles.iconBox}>
-            <Ionicons name="calendar" size={28} color="#362FFA" />
-          </View>
-          <Text style={styles.label}>Agendamento</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.item}>
-          <View style={styles.iconBox}>
-            <Ionicons name="receipt" size={28} color="#362FFA" />
-          </View>
-          <Text style={styles.label}>Extrato</Text>
-        </TouchableOpacity>
-      </View>
+      <View style={{marginVertical: 20}}></View>
 
       <ScrollView
         horizontal
